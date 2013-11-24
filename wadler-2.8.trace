@@ -1,0 +1,90 @@
+eval(Div(Con(1972), Con(2)), 0)
+
+Div(Con(1972), Con(2)).eval()(0)
+
+(unit(1972) * (lambda a: self.Term2.eval() * \
+               (lambda b: tick()           * \
+                (lambda _: unit(a / b)))))(0)
+
+(M(lambda x: (1972, x)) * (lambda a: self.Term2.eval() * \
+                           (lambda b: tick()           * \
+                            (lambda _: unit(a / b)))))(0)
+
+[[[
+    Func_1(a) :
+        (lambda a: self.Term2.eval() * \
+         (lambda b: tick()           * \
+          (lambda _: unit(a / b))))(a)
+
+    Callable_1(x) :
+        a, y = (1972, x)
+        b, z = Func_1(a)(y)
+        return b, z
+]]]
+
+Callable_1(0)
+
+Func_1(1972)(0)
+
+(lambda a: self.Term2.eval() * \
+ (lambda b: tick()           * \
+  (lambda _: unit(a / b))))(1972)(0)
+
+[[[
+    a: 1972
+]]]
+
+(self.Term2.eval() * (lambda b: tick()     * \
+                      (lambda _: unit(a / b))))(0)
+
+[[[
+    self.Term2.eval() === Con(2).eval() === unit(2) === M(lambda x: (2, x))
+]]]
+
+(M(lambdax: (2, x)) * (lambda b: tick()     * \
+                       (lambda _: unit(a / b))))(0)
+
+[[[
+    Func_2(a) :
+        (lambda b: tick() * (lambda _: unit(a / b)))(a)
+
+    Callable_2(x) :
+        a, y = (2, x)
+        b, z = Func_2(a)(y)
+        return b, z
+]]]
+
+Callable_2(0)
+
+Func_2(2)(0)
+
+[[[
+    b: 2
+]]]
+
+(tick() * (lambda _: unit(a / b)))(0)
+
+(M(lambda x: (None, x + 1)) * (lambda _: unit(a / b)))(0)
+
+[[[
+    Func_3(a) :
+        (lambda _: unit(a / b))(a)
+
+    Callable_3(x) :
+        a, y = (None, x + 1)
+        b, z = Func_3(a)(y)
+       (b, z = Func_3(None)(x + 1))
+        return b, z
+]]]
+
+Callable_3(0)
+
+Func_3(None)(1)
+
+unit(1972 / 2)(1)
+
+unit(986)(1)
+
+M(lambda x: (986, x))(1)
+
+(986, 1)
